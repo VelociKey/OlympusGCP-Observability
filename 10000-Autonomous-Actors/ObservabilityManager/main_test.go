@@ -4,12 +4,13 @@ import (
 	"context"
 	"testing"
 
-	observabilityv1 "OlympusGCP-Observability/40000-Communication-Contracts/430-Protocol-Definitions/000-gen/observability/v1"
+	observabilityv1 "OlympusGCP-Observability/gen/v1/observability"
+	"OlympusGCP-Observability/10000-Autonomous-Actors/10700-Processing-Engines/10710-Reasoning-Inference/inference"
 	"connectrpc.com/connect"
 )
 
 func TestObservabilityServer(t *testing.T) {
-	server := &ObservabilityServer{}
+	server := &inference.ObservabilityServer{}
 	ctx := context.Background()
 
 	// Test WriteLog

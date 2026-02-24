@@ -432,7 +432,7 @@ const file_observability_v1_observability_proto_rawDesc = "" +
 	"\bWriteLog\x12!.observability.v1.WriteLogRequest\x1a\".observability.v1.WriteLogResponse\x12]\n" +
 	"\fRecordMetric\x12%.observability.v1.RecordMetricRequest\x1a&.observability.v1.RecordMetricResponse\x12T\n" +
 	"\tStartSpan\x12\".observability.v1.StartSpanRequest\x1a#.observability.v1.StartSpanResponse\x12N\n" +
-	"\aEndSpan\x12 .observability.v1.EndSpanRequest\x1a!.observability.v1.EndSpanResponseBzZxOlympusGCP-Observability/40000-Communication-Contracts/430-Protocol-Definitions/000-gen/observability/v1;observabilityv1b\x06proto3"
+	"\aEndSpan\x12 .observability.v1.EndSpanRequest\x1a!.observability.v1.EndSpanResponseBzZxOlympusGCP-Observability/gen/v1/observability;observabilityv1b\x06proto3"
 
 var (
 	file_observability_v1_observability_proto_rawDescOnce sync.Once

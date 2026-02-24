@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package observability.v1;
 
-option go_package = "OlympusGCP-Observability/40000-Communication-Contracts/430-Protocol-Definitions/000-gen/observability/v1;observabilityv1";
+option go_package = "OlympusGCP-Observability/gen/v1/observability;observabilityv1";
 
 service ObservabilityService {
   rpc WriteLog (WriteLogRequest) returns (WriteLogResponse);

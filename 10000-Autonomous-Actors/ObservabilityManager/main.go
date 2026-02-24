@@ -1,46 +1,29 @@
 package main
 
 import (
-	"context"
+	"fmt"
 	"log/slog"
 	"net/http"
 	"time"
 
-	observabilityv1 "OlympusGCP-Observability/40000-Communication-Contracts/430-Protocol-Definitions/000-gen/observability/v1"
-	"OlympusGCP-Observability/40000-Communication-Contracts/430-Protocol-Definitions/000-gen/observability/v1/observabilityv1connect"
+	"OlympusGCP-Observability/gen/v1/observability/observabilityv1connect"
+	"OlympusGCP-Observability/10000-Autonomous-Actors/10700-Processing-Engines/10710-Reasoning-Inference/inference"
 
-	"connectrpc.com/connect"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
 )
 
-type ObservabilityServer struct{}
-
-func (s *ObservabilityServer) WriteLog(ctx context.Context, req *connect.Request[observabilityv1.WriteLogRequest]) (*connect.Response[observabilityv1.WriteLogResponse], error) {
-	slog.Info("WriteLog", "log", req.Msg.LogName, "severity", req.Msg.Severity, "msg", req.Msg.Message)
-	return connect.NewResponse(&observabilityv1.WriteLogResponse{}), nil
-}
-
-func (s *ObservabilityServer) RecordMetric(ctx context.Context, req *connect.Request[observabilityv1.RecordMetricRequest]) (*connect.Response[observabilityv1.RecordMetricResponse], error) {
-	slog.Info("RecordMetric", "type", req.Msg.MetricType, "value", req.Msg.Value)
-	return connect.NewResponse(&observabilityv1.RecordMetricResponse{}), nil
-}
-
-func (s *ObservabilityServer) StartSpan(ctx context.Context, req *connect.Request[observabilityv1.StartSpanRequest]) (*connect.Response[observabilityv1.StartSpanResponse], error) {
-	slog.Info("StartSpan", "name", req.Msg.Name, "trace", req.Msg.TraceId)
-	return connect.NewResponse(&observabilityv1.StartSpanResponse{SpanId: "span-123"}), nil
-}
-
-func (s *ObservabilityServer) EndSpan(ctx context.Context, req *connect.Request[observabilityv1.EndSpanRequest]) (*connect.Response[observabilityv1.EndSpanResponse], error) {
-	slog.Info("EndSpan", "span", req.Msg.SpanId)
-	return connect.NewResponse(&observabilityv1.EndSpanResponse{}), nil
-}
-
 func main() {
-	server := &ObservabilityServer{}
+	server := &inference.ObservabilityServer{}
 	mux := http.NewServeMux()
 	path, handler := observabilityv1connect.NewObservabilityServiceHandler(server)
 	mux.Handle(path, handler)
+
+	// Health Check / Pulse
+	mux.HandleFunc("/pulse", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		fmt.Fprintf(w, `{"status":"HEALTHY", "workspace":"OlympusGCP-Observability", "time":"%s"}`, time.Now().Format(time.RFC3339))
+	})
 
 	port := "8097" // From genesis.json
 	slog.Info("ObservabilityManager starting", "port", port)
