@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	observabilityv1 "OlympusGCP-Observability/gen/v1/observability"
-	"OlympusGCP-Observability/10000-Autonomous-Actors/10700-Processing-Engines/10710-Reasoning-Inference/inference"
+	observabilityv1 "olympus.fleet/00SDLC/OlympusGCP-Observability/gen/v1/observability"
+	"olympus.fleet/00SDLC/OlympusGCP-Observability/10000-Autonomous-Actors/10700-Processing-Engines/10710-Reasoning-Inference/inference"
 	"connectrpc.com/connect"
 )
 

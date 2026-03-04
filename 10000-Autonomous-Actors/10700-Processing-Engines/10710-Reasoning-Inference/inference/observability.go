@@ -4,7 +4,7 @@ import (
 	"context"
 	"log/slog"
 
-	observabilityv1 "OlympusGCP-Observability/gen/v1/observability"
+	observabilityv1 "olympus.fleet/00SDLC/OlympusGCP-Observability/gen/v1/observability"
 	"connectrpc.com/connect"
 )
 

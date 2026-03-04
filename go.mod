@@ -1,11 +1,10 @@
-module OlympusGCP-Observability
+module olympus.fleet/00SDLC/OlympusGCP-Observability
 
-go 1.25.7
-
-require connectrpc.com/connect v1.19.1
+go 1.26.0
 
 require (
-	golang.org/x/net v0.50.0
+	connectrpc.com/connect v1.19.1
+	golang.org/x/net v0.51.0
 	google.golang.org/protobuf v1.36.11
 )
 
