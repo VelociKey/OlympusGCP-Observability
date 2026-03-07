@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	observabilityv1 "olympus.fleet/00SDLC/OlympusGCP-Observability/gen/v1/observability"
+	observabilityv1 "olympus.fleet/00SDLC/OlympusGCP-Observability/40000-Communication-Contracts/40400-Protocol-Synthetics/connect-rpc/gen/v1/observability"
 	"connectrpc.com/connect"
 )
 

@@ -5,7 +5,7 @@
 package observabilityv1connect
 
 import (
-	observability "olympus.fleet/00SDLC/OlympusGCP-Observability/gen/v1/observability"
+	observability "olympus.fleet/00SDLC/OlympusGCP-Observability/40000-Communication-Contracts/40400-Protocol-Synthetics/connect-rpc/gen/v1/observability"
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
